@@ -1,0 +1,8 @@
+services:
+  debug:
+    container_name: debug
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ".:/microservices/debug_docker"

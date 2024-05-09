@@ -1,0 +1,14 @@
+services:
+  debug:
+    container_name: debug
+    build:
+      dockerfile: Dockerfile-debug
+    ports:
+      - "80:80"
+      - "40000:40000"
+    volumes:
+      - ".:/microservices/debug_docker"
+    security_opt:
+      - "seccomp:unconfined"
+    cap_add:
+      - SYS_PTRACE
