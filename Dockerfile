@@ -3,7 +3,7 @@ FROM golang:1.22.1
 # build watcher
 RUN go install github.com/ysmood/kit/cmd/guard@v0.25.11
 
-WORKDIR /microservices/debug_docker
+WORKDIR /debug_docker
 
 COPY go.mod ./
 

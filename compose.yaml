@@ -5,4 +5,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ".:/microservices/debug_docker"
+      - ".:/debug_docker"
