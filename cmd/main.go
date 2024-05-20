@@ -20,8 +20,10 @@ func main() {
 
 	r := http.NewServeMux()
 	r.Handle("/", http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
-		writer.Header().Set("Content-Type", "text/plain")
-		writer.Write([]byte("OK\n"))
+		for i := 15; i > 0; i-- {
+			log.Println(i)
+			time.Sleep(time.Second)
+		}
 	}))
 	srv := &http.Server{
 		Addr:    port,
@@ -39,7 +41,7 @@ func main() {
 	<-ctx.Done()
 
 	log.Println("Shutting down gracefully...")
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
 	defer cancel()
 	if err := srv.Shutdown(ctx); err != nil {
 		log.Fatalf("HTTP shutdown error: %v", err)
